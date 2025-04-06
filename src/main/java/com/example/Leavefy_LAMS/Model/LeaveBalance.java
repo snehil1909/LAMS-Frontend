@@ -34,5 +34,9 @@ public class LeaveBalance {
 
     @Column(name = "used_days", nullable = false)
     private Integer usedDays;
+
+
+    @Column(name = "remaining_days", nullable = false)
+    private Integer remainingDays;
 }
 
