@@ -1,0 +1,79 @@
+.leave-request-container {
+  max-width: 800px; /* Increased width for a broader form */
+  margin: 50px auto;
+  padding: 60px; /* Increased padding for a more spacious layout */
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.leave-request-container:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.5);
+}
+
+.form-title {
+  text-align: center;
+  font-size: 28px; /* Slightly larger font size */
+  color: #333333;
+  margin-bottom: 30px; /* Increased spacing below the title */
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+}
+
+.leave-request-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px; /* Increased gap between form fields */
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  font-size: 16px; /* Slightly larger font size for labels */
+  font-weight: bold;
+  color: #4c51bf;
+  margin-bottom: 8px; /* Increased spacing below labels */
+}
+
+.form-control {
+  padding: 12px; /* Increased padding for input fields */
+  border: 1px solid #ccc;
+  border-radius: 6px; /* Slightly more rounded corners */
+  font-size: 16px; /* Larger font size for better readability */
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+.form-control:focus {
+  border-color: #4c51bf;
+  box-shadow: 0 0 5px rgba(76, 81, 191, 0.5);
+}
+
+.btn-submit {
+  padding: 15px; /* Increased padding for the button */
+  background: linear-gradient(to right, #4c51bf, #667eea);
+  color: #ffffff;
+  font-size: 18px; /* Larger font size for the button */
+  font-weight: bold;
+  border: none;
+  border-radius: 6px; /* Slightly more rounded corners */
+  cursor: pointer;
+  transition: background 0.3s, transform 0.2s;
+}
+
+.btn-submit:hover {
+  background: linear-gradient(to right, #667eea, #4c51bf);
+  transform: translateY(-2px);
+}
+
+.error-message {
+  color: red;
+  font-size: 16px; /* Slightly larger font size for error messages */
+  margin-bottom: 15px;
+  text-align: center;
+}
