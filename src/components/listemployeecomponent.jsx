@@ -130,9 +130,8 @@ const ListEmployeeComponent = () => {
   };
 
   return (
-    <div className="page-container">
-      <div className="content-wrap">
-        <div className="container">
+    <div className='list-employee-component'>
+        <div className='content-wrap'>
           <h2 className="text-center">List of Employees</h2>
           {/* Filters and Search */}
           <div className="filters-bar" style={{ display: "flex", gap: "1rem", marginBottom: "1rem" }}>
@@ -210,7 +209,6 @@ const ListEmployeeComponent = () => {
           </table>
         </div>
       </div>
-    </div>
   );
 };
 

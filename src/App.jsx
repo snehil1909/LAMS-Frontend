@@ -14,7 +14,7 @@ import LeaveRequestsComponent from './components/LeaveRequestsComponent'; // Imp
 
 function App() {
   return (
-    <div className="container d-flex flex-column align-items-center justify-content-center">
+    <div className="app-container">
       <BrowserRouter>
         <HeaderComponent />
         <Routes>
@@ -27,7 +27,6 @@ function App() {
           <Route path="/submit-leave/:userId" element={<SubmitLeaveRequestComponent />} /> {/* New route */}
           <Route path="/leave-requests/:userId" element={<LeaveRequestsComponent />} /> {/* New route */}
         </Routes>
-        <FooterComponent />
       </BrowserRouter>
     </div>
   );
