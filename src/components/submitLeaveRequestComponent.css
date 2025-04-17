@@ -1,31 +1,31 @@
 .leave-request-container {
-  max-width: 800px; /* Increased width for a broader form */
-  margin: 50px auto;
-  padding: 60px; /* Increased padding for a more spacious layout */
+  max-width: 600px;
+  margin: 60px auto;
+  padding: 40px;
   background: #ffffff;
   border-radius: 12px;
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .leave-request-container:hover {
   transform: translateY(-5px);
-  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
 }
 
 .form-title {
   text-align: center;
-  font-size: 28px; /* Slightly larger font size */
-  color: #333333;
-  margin-bottom: 30px; /* Increased spacing below the title */
-  text-transform: uppercase;
-  letter-spacing: 1.5px;
+  font-size: 26px;
+  color: #000000;
+  margin-bottom: 30px;
+  font-weight: 600;
+  letter-spacing: -0.5px;
 }
 
 .leave-request-form {
   display: flex;
   flex-direction: column;
-  gap: 20px; /* Increased gap between form fields */
+  gap: 24px;
 }
 
 .form-group {
@@ -34,46 +34,49 @@
 }
 
 .form-group label {
-  font-size: 16px; /* Slightly larger font size for labels */
-  font-weight: bold;
-  color: #4c51bf;
-  margin-bottom: 8px; /* Increased spacing below labels */
+  font-size: 15px;
+  font-weight: 500;
+  color: #333333;
+  margin-bottom: 8px;
 }
 
 .form-control {
-  padding: 12px; /* Increased padding for input fields */
-  border: 1px solid #ccc;
-  border-radius: 6px; /* Slightly more rounded corners */
-  font-size: 16px; /* Larger font size for better readability */
+  padding: 14px;
+  border: 1px solid #e0e0e0;
+  border-radius: 6px;
+  font-size: 15px;
   outline: none;
-  transition: border-color 0.3s ease;
+  transition: all 0.2s;
 }
 
 .form-control:focus {
-  border-color: #4c51bf;
-  box-shadow: 0 0 5px rgba(76, 81, 191, 0.5);
+  border-color: #000000;
+  box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.05);
 }
 
 .btn-submit {
-  padding: 15px; /* Increased padding for the button */
-  background: linear-gradient(to right, #4c51bf, #667eea);
+  padding: 14px;
+  background-color: #000000;
   color: #ffffff;
-  font-size: 18px; /* Larger font size for the button */
-  font-weight: bold;
+  font-size: 16px;
+  font-weight: 500;
   border: none;
-  border-radius: 6px; /* Slightly more rounded corners */
+  border-radius: 6px;
   cursor: pointer;
-  transition: background 0.3s, transform 0.2s;
+  transition: all 0.2s ease;
+  letter-spacing: 0.3px;
+  margin-top: 10px;
 }
 
 .btn-submit:hover {
-  background: linear-gradient(to right, #667eea, #4c51bf);
+  background-color: #333333;
   transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .error-message {
-  color: red;
-  font-size: 16px; /* Slightly larger font size for error messages */
-  margin-bottom: 15px;
+  color: #ff3b30;
+  font-size: 16px;
+  margin-bottom: 20px;
   text-align: center;
 }

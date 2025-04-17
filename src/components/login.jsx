@@ -19,7 +19,7 @@ const Login = () => {
           <input className="w-full p-2 mb-2 mt-1 outline-none ring-none focus:ring-2 focus:ring-indigo-500" type="email" required />   
           <label className="text-xs font-bold after:content-['*'] after:text-red-400" htmlFor="password">Password</label>
           <input className="w-full p-2 mb-2 mt-1 outline-none ring-none focus:ring-2 focus:ring-indigo-500" type="password" required />
-          <a href="#" className="block text-right text-xs text-indigo-500 mb-4">Forgot Password?</a>
+          <a href="#" className="">Forgot Password?</a>
           <button className="w-full rounded bg-indigo-500 text-indigo-50 p-2 text-center font-bold hover:bg-indigo-400">Log In</button>
         </fieldset>
       </form>

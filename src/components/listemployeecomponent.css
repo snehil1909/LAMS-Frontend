@@ -12,7 +12,7 @@ h2 {
 }
 
 .btn-primary {
-  background-color: #007bff;
+  background-color: #000000;
   border: none;
   color: white;
   padding: 10px 20px;
@@ -39,7 +39,10 @@ h2 {
 }
 
 .table th {
-  background-color: #007bff;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-size: 13px;
+  background-color: #000000;
   color: white;
 }
 
@@ -51,13 +54,80 @@ h2 {
   background-color: #f1f1f1;
 }
 
+.filters-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 24px;
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
 .filters-bar select,
 .filters-bar input {
-  padding: 6px 10px;
-  border-radius: 4px;
-  border: 1px solid #ccc;
+  padding: 12px 16px;
+  border: 1px solid #e0e0e0;
+  border-radius: 6px;
+  flex-grow: 1;
+  min-width: 180px;
+  font-size: 14px;
 }
 
 .filters-bar button {
-  padding: 6px 16px;
+  padding: 12px 18px;
+  background-color: #000000;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.filters-bar button:hover {
+  background-color: #333333;
+}
+
+.action-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.action-buttons button {
+  padding: 10px 14px;
+  font-size: 13px;
+  border-radius: 6px;
+  font-weight: 500;
+  transition: all 0.2s;
+}
+
+.btn-view {
+  background-color: #000000;
+  color: white;
+  border: none;
+}
+
+.btn-update {
+  background-color: #444444;
+  color: white;
+  border: none;
+}
+
+.btn-delete {
+  background-color: #666666;
+  color: white;
+  border: none;
+}
+
+.action-buttons button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.list-employee-component {
+  width: 100%;
+  max-width: 1600px;
+  margin: 0 auto;
+  padding: 20px;
 }
