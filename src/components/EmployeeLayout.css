@@ -1,0 +1,19 @@
+.employee-layout {
+  display: flex;
+  min-height: 100vh;
+}
+
+.employee-content {
+  flex: 1;
+  margin-left: 250px; /* Same as side-menu width */
+  padding: 20px;
+  padding-top: 70px; /* Space for the header */
+  transition: margin-left 0.3s ease;
+}
+
+/* Responsive design for small screens */
+@media (max-width: 768px) {
+  .employee-content {
+    margin-left: 60px; /* Same as collapsed side-menu width */
+  }
+}

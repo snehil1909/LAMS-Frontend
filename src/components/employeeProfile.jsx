@@ -39,7 +39,7 @@ const EmployeeProfile = () => {
 
   if (loading) {
     return (
-      <div className="profile-container loading-container">
+      <div className="profile-container">
         <div className="loading-spinner"></div>
         <p>Loading profile...</p>
       </div>
@@ -48,7 +48,7 @@ const EmployeeProfile = () => {
 
   if (error || !profile) {
     return (
-      <div className="profile-container error-container">
+      <div className="profile-container">
         <h3>Error</h3>
         <p>{error || "Failed to load employee profile"}</p>
         <button className="btn btn-primary" onClick={() => window.location.reload()}>

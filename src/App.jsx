@@ -8,24 +8,50 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import AddEmployeeComponent from './components/addEmployeeComponent';
 import DeleteEmployeeComponent from './components/deleteEmployeeComponent';
 import EmployeeProfile from './components/employeeProfile';
-import UpdateEmployeeComponent from './components/updateEmployeeComponent'; // Import the new component
-import SubmitLeaveRequestComponent from './components/submitLeaveRequestComponent'; // Import the new component
-import LeaveRequestsComponent from './components/LeaveRequestsComponent'; // Import the new component
+import UpdateEmployeeComponent from './components/updateEmployeeComponent';
+import SubmitLeaveRequestComponent from './components/submitLeaveRequestComponent';
+import LeaveRequestsComponent from './components/LeaveRequestsComponent';
+import EmployeeLayout from './components/EmployeeLayout';
 
 function App() {
   return (
     <div className="app-container">
       <BrowserRouter>
-        <HeaderComponent />
+        <HeaderComponent/>
         <Routes>
+          {/* Admin/Public routes without side menu */}
           <Route path="/" element={<Login />} />
           <Route path="/employees" element={<ListEmployeeComponent />} />
           <Route path="/add-employee" element={<AddEmployeeComponent />} />
           <Route path="/delete-employee" element={<DeleteEmployeeComponent />} />
-          <Route path="/profile/:userId" element={<EmployeeProfile />} />
-          <Route path="/update-employee/:id" element={<UpdateEmployeeComponent />} /> {/* New route */}
-          <Route path="/submit-leave/:userId" element={<SubmitLeaveRequestComponent />} /> {/* New route */}
-          <Route path="/leave-requests/:userId" element={<LeaveRequestsComponent />} /> {/* New route */}
+          <Route path="/update-employee/:id" element={<UpdateEmployeeComponent />} />
+          
+          {/* Employee routes with side menu */}
+          <Route path="/profile/:userId" element={
+            <EmployeeLayout>
+              <EmployeeProfile />
+            </EmployeeLayout>
+          } />
+          <Route path="/submit-leave/:userId" element={
+            <EmployeeLayout>
+              <SubmitLeaveRequestComponent />
+            </EmployeeLayout>
+          } />
+          <Route path="/leave-requests/:userId" element={
+            <EmployeeLayout>
+              <LeaveRequestsComponent />
+            </EmployeeLayout>
+          } />
+          {/* Add route for mark attendance when you create that component */}
+          <Route path="/mark-attendance/:userId" element={
+            <EmployeeLayout>
+              {/* Replace with your AttendanceComponent when created */}
+              <div className="container">
+                <h2>Mark Attendance</h2>
+                <p>This feature is coming soon...</p>
+              </div>
+            </EmployeeLayout>
+          } />
         </Routes>
       </BrowserRouter>
     </div>
