@@ -1,0 +1,90 @@
+.attendance-container {
+  max-width: 600px;
+  margin: 40px auto;
+  padding: 36px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+  text-align: center;
+}
+
+.form-title {
+  font-size: 26px;
+  color: #000;
+  margin-bottom: 24px;
+  font-weight: 600;
+}
+
+.btn-attendance {
+  background: #000;
+  color: #fff;
+  padding: 14px 32px;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  font-weight: 500;
+  margin-bottom: 24px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.btn-attendance:hover {
+  background: #333;
+}
+
+.status-msg {
+  margin-bottom: 18px;
+  color: #222;
+  font-weight: 500;
+}
+
+.calendar-section {
+  margin-top: 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.react-calendar {
+  border: none;
+  font-family: inherit;
+  width: 100%;
+  max-width: 400px;
+  background: #fafafa;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+}
+
+.react-calendar__tile {
+  height: 40px;
+  font-size: 15px;
+  border-radius: 6px;
+}
+
+.react-calendar__tile.present {
+  background: #08aa41 !important;
+  color: #fff !important;
+}
+
+.react-calendar__tile.absent {
+  background: #9f150e !important;
+  color: #fff !important;
+}
+
+.legend {
+  display: flex;
+  gap: 18px;
+  margin-top: 18px;
+  justify-content: center;
+  align-items: center;
+  font-size: 15px;
+}
+.legend-item {
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  border-radius: 4px;
+  margin-right: 6px;
+  vertical-align: middle;
+}
+.legend-item.present { background: #1db954; }
+.legend-item.absent { background: #ff3b30; }

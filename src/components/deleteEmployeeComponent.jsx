@@ -11,7 +11,7 @@ const DeleteEmployeeComponent = () => {
   const handleDelete = (e) => {
     e.preventDefault();
     axios
-      .delete(`http://192.168.47.134:5000/api/users/${employeeId}`)
+      .delete(`http://192.168.47.133:5000/api/users/${employeeId}`)
       .then(() => {
         alert("Employee deleted successfully!");
         setEmployeeId(""); // Clear the input field

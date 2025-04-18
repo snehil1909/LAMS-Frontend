@@ -12,6 +12,7 @@ import UpdateEmployeeComponent from './components/updateEmployeeComponent';
 import SubmitLeaveRequestComponent from './components/submitLeaveRequestComponent';
 import LeaveRequestsComponent from './components/LeaveRequestsComponent';
 import EmployeeLayout from './components/EmployeeLayout';
+import MarkAttendanceComponent from './components/MarkAttendanceComponent';
 
 function App() {
   return (
@@ -45,11 +46,7 @@ function App() {
           {/* Add route for mark attendance when you create that component */}
           <Route path="/mark-attendance/:userId" element={
             <EmployeeLayout>
-              {/* Replace with your AttendanceComponent when created */}
-              <div className="container">
-                <h2>Mark Attendance</h2>
-                <p>This feature is coming soon...</p>
-              </div>
+              <MarkAttendanceComponent />
             </EmployeeLayout>
           } />
         </Routes>

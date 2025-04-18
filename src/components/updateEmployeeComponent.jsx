@@ -14,12 +14,13 @@ const UpdateEmployeeComponent = () => {
     departmentId: "",
     supervisorId: "",
     roleId: "",
+    countryId: "",
   });
 
   useEffect(() => {
     // Fetch employee details to pre-fill the form
     axios
-      .get(`http://192.168.47.134:5000/api/users/${id}`)
+      .get(`http://192.168.47.133:5000/api/users/${id}`)
       .then((response) => {
         setEmployee(response.data);
       })
@@ -37,7 +38,7 @@ const UpdateEmployeeComponent = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     axios
-      .put(`http://192.168.47.134:5000/api/users/${id}`, employee)
+      .put(`http://192.168.47.133:5000/api/users/${id}`, employee)
       .then(() => {
         alert("Employee updated successfully!");
         navigate("/employees"); // Redirect to the employee list page
@@ -133,6 +134,16 @@ const UpdateEmployeeComponent = () => {
             name="roleId"
             className="form-control"
             value={employee.roleId}
+            onChange={handleChange}
+          />
+        </div>
+        <div className="form-group">
+          <label>Country ID</label>
+          <input
+            type="text"
+            name="countryId"
+            className="form-control"
+            value={employee.countryId}
             onChange={handleChange}
           />
         </div>

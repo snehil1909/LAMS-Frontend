@@ -23,20 +23,37 @@ const ListEmployeeComponent = () => {
 
   // Fetch all employees and filter options on mount
   useEffect(() => {
+    // Fetch all employees
     listemployees()
       .then((response) => setEmployees(response.data))
-      .catch((error) => console.error('Error fetching employees:', error));
+      .catch((error) => console.error("Error fetching employees:", error));
 
-    // Fetch departments, supervisors, and roles for dropdowns
-    axios.get("http://192.168.47.134:5000/api/departments")
+    // Fetch departments
+    axios
+      .get("http://192.168.47.133:5000/api/users/departments")
       .then((res) => setDepartments(res.data))
-      .catch(() => setDepartments([]));
-    axios.get("http://192.168.47.134:5000/api/users") // Assuming all users can be supervisors
+      .catch((error) => {
+        console.error("Error fetching departments:", error);
+        setDepartments([]);
+      });
+
+    // Fetch supervisors
+    axios
+      .get("http://192.168.47.133:5000/api/users")
       .then((res) => setSupervisors(res.data))
-      .catch(() => setSupervisors([]));
-    axios.get("http://192.168.47.134:5000/api/roles")
+      .catch((error) => {
+        console.error("Error fetching supervisors:", error);
+        setSupervisors([]);
+      });
+
+    // Fetch roles
+    axios
+      .get("http://192.168.47.133:5000/api/users/roles")
       .then((res) => setRoles(res.data))
-      .catch(() => setRoles([]));
+      .catch((error) => {
+        console.error("Error fetching roles:", error);
+        setRoles([]);
+      });
   }, []);
 
   // Handle filter changes
@@ -46,7 +63,10 @@ const ListEmployeeComponent = () => {
     if (value) {
       getEmployeesByDepartment(value)
         .then((res) => setEmployees(res.data))
-        .catch(() => setEmployees([]));
+        .catch((error) => {
+          console.error("Error fetching employees by department:", error);
+          setEmployees([]);
+        });
     } else {
       listemployees().then((res) => setEmployees(res.data));
     }
@@ -58,7 +78,10 @@ const ListEmployeeComponent = () => {
     if (value) {
       getEmployeesBySupervisor(value)
         .then((res) => setEmployees(res.data))
-        .catch(() => setEmployees([]));
+        .catch((error) => {
+          console.error("Error fetching employees by supervisor:", error);
+          setEmployees([]);
+        });
     } else {
       listemployees().then((res) => setEmployees(res.data));
     }
@@ -70,7 +93,10 @@ const ListEmployeeComponent = () => {
     if (value) {
       getEmployeesByRole(value)
         .then((res) => setEmployees(res.data))
-        .catch(() => setEmployees([]));
+        .catch((error) => {
+          console.error("Error fetching employees by role:", error);
+          setEmployees([]);
+        });
     } else {
       listemployees().then((res) => setEmployees(res.data));
     }
@@ -110,7 +136,7 @@ const ListEmployeeComponent = () => {
   const deleteEmployee = (id) => {
     if (window.confirm("Are you sure you want to delete this employee?")) {
       axios
-        .delete(`http://192.168.47.134:5000/api/users/${id}`) // Updated to match your DeleteMapping API path
+        .delete(`http://192.168.47.133:5000/api/users/${id}`) // Updated to match your DeleteMapping API path
         .then(() => {
           alert("Employee deleted successfully!");
           // Refresh the employee list

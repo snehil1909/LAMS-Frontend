@@ -17,7 +17,7 @@ const LeaveRequestsComponent = () => {
   useEffect(() => {
     // Fetch leave requests for the user
     axios
-      .get(`http://192.168.47.134:5000/api/employee/${userId}/leave-requests`)
+      .get(`http://192.168.47.133:5000/api/employee/${userId}/leave-requests`)
       .then((response) => {
         setLeaveRequests(response.data);
       })
@@ -28,7 +28,7 @@ const LeaveRequestsComponent = () => {
 
     // Fetch leave balance for the user
     axios
-      .get(`http://192.168.47.134:5000/api/employee/${userId}/leave-balance`)
+      .get(`http://192.168.47.133:5000/api/employee/${userId}/leave-balance`)
       .then((response) => {
         setLeaveBalance(response.data);
       })
@@ -42,7 +42,7 @@ const LeaveRequestsComponent = () => {
     if (window.confirm("Are you sure you want to cancel this leave request?")) {
       axios
         .put(
-          `http://192.168.47.134:5000/api/employee/${userId}/leave-request/${requestId}/cancel`
+          `http://192.168.47.133:5000/api/employee/${userId}/leave-request/${requestId}/cancel`
         )
         .then(() => {
           alert("Leave request canceled successfully!");

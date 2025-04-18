@@ -22,7 +22,7 @@ const SubmitLeaveRequestComponent = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     axios
-      .post(`http://192.168.47.134:5000/api/employee/${userId}/leave-request`, leaveRequest)
+      .post(`http://192.168.47.133:5000/api/employee/${userId}/leave-request`, leaveRequest)
       .then(() => {
         alert("Leave request submitted successfully!");
         navigate(`/profile/${userId}`); // Redirect to the user's profile page

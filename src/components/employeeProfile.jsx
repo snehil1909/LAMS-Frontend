@@ -15,7 +15,7 @@ const EmployeeProfile = () => {
         setLoading(true);
         // Using the employeeservice instead of direct axios call
         const response = await axios.get(
-          `http://192.168.47.134:5000/api/employee/profile/${userId}`
+          `http://192.168.47.133:5000/api/employee/profile/${userId}`
         );
         
         console.log("API Response:", response.data); // Debug log
@@ -97,6 +97,14 @@ const EmployeeProfile = () => {
             <div>
               <span className="label">Email Address</span>
               <span className="value">{profile?.email || "N/A"}</span>
+            </div>
+          </div>
+
+          <div className="info-item">
+            <span className="icon">🌍</span>
+            <div>
+              <span className="label">Country ID</span>
+              <span className="value">{profile?.countryId || "N/A"}</span>
             </div>
           </div>
         </div>

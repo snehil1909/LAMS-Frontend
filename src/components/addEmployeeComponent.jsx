@@ -13,6 +13,7 @@ const AddEmployeeComponent = () => {
     departmentId: "",
     supervisorId: "",
     roleId: "",
+    countryId: "",
   });
 
   const handleChange = (e) => {
@@ -122,6 +123,17 @@ const AddEmployeeComponent = () => {
             name="roleId"
             className="form-control"
             value={employee.roleId}
+            onChange={handleChange}
+            required
+          />
+        </div>
+        <div className="form-group">
+          <label>Country ID</label>
+          <input
+            type="text"
+            name="countryId"
+            className="form-control"
+            value={employee.countryId}
             onChange={handleChange}
             required
           />
