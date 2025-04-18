@@ -1,0 +1,81 @@
+.supervisor-page {
+  max-width: 1200px;
+  margin: 40px auto;
+  padding: 20px;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.table th,
+.table td {
+  text-align: left;
+  padding: 12px;
+  border: 1px solid #dddddd;
+}
+
+.table th {
+  background-color: #000000;
+  color: white;
+  font-weight: 500;
+}
+
+.table tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.table tr:hover {
+  background-color: #f2f2f2;
+}
+
+.btn {
+  padding: 8px 12px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.btn-info {
+  background-color: #007bff;
+  color: white;
+}
+
+.btn-warning {
+  background-color: #ffc107;
+  color: black;
+}
+
+.btn-disabled {
+  background-color: #e0e0e0;
+  color: #888;
+  cursor: not-allowed;
+}
+
+.modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+}
+
+.modal h3 {
+  margin-top: 0;
+}
+
+.btn-close {
+  background-color: #ff3b30;
+  color: white;
+  margin-top: 20px;
+}

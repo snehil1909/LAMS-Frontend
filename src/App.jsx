@@ -49,6 +49,11 @@ function App() {
               <MarkAttendanceComponent />
             </EmployeeLayout>
           } />
+          <Route path="/supervisor/:supervisorId" element={
+            <EmployeeLayout>
+              <SupervisorPage />
+            </EmployeeLayout>
+          } />
         </Routes>
       </BrowserRouter>
     </div>
