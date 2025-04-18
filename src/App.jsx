@@ -13,6 +13,7 @@ import SubmitLeaveRequestComponent from './components/submitLeaveRequestComponen
 import LeaveRequestsComponent from './components/LeaveRequestsComponent';
 import EmployeeLayout from './components/EmployeeLayout';
 import MarkAttendanceComponent from './components/MarkAttendanceComponent';
+import SupervisorPage from './components/SupervisorPage';
 
 function App() {
   return (
