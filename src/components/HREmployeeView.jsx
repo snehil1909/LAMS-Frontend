@@ -18,7 +18,7 @@ const HREmployeeView = () => {
 
   const fetchEmployees = async () => {
     try {
-      const response = await axios.get(`http://192.168.47.133:5000/api/hr/${user.userId}/employees`);
+      const response = await axios.get(`http://192.168.47.133:5000/api/hr/${user.supervisorId}/employees`);
       setEmployees(response.data);
       setLoading(false);
     } catch (err) {
@@ -30,7 +30,7 @@ const HREmployeeView = () => {
   const fetchLeaveBalance = async (employeeId) => {
     try {
       const response = await axios.get(
-        `http://192.168.47.133:5000/api/hr/${user.userId}/employees/${employeeId}/leave-balance`
+        `http://192.168.47.133:5000/api/hr/${user.supervisorId}/employees/${employeeId}/leave-balance`
       );
       setLeaveBalance(response.data);
       setShowLeaveBalance(true);

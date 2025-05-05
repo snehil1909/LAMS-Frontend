@@ -14,7 +14,8 @@ const handleLogin = async (event) => {
   try {
     // Replace with your actual API endpoint
     const res = await axios.get(`http://192.168.47.133:5000/api/id/get-userid/${email}/`);
-    const userId = res.data;
+    const userId = res.data.userId;
+    const supervisorId = res.data.supervisorId;
     if (!userId) {
       setError('User not found.');
       return;
@@ -23,15 +24,16 @@ const handleLogin = async (event) => {
 
     // Determine role based on userId
     let role = '';
+    console.log(userId);
     if (userId >= 1 && userId <= 34) role = 'SUPERVISOR';
     else if (userId >= 1000 && userId <= 1999) role = 'EMPLOYEE';
     else if (userId >= 2000 && userId <= 2999) role = 'HR';
     else if (userId === 3000) role = 'ADMIN';
     else role = 'UNKNOWN';
-
+    console.log(role);
     // Save to localStorage
-    localStorage.setItem('user', JSON.stringify({ userId, email, role }));
-
+    localStorage.setItem('user', JSON.stringify({ userId, supervisorId, email, role}));
+ 
     // Redirect based on role
     if (role === 'SUPERVISOR') navigate(`/profile/${userId}`);
     else if (role === 'EMPLOYEE') navigate(`/profile/${userId}`);
