@@ -24,7 +24,7 @@ const AddEmployeeComponent = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     axios
-      .post("http://192.168.47.134:5000/api/users/createUser", employee)
+      .post("http://192.168.47.133:5000/api/users/createUser", employee)
       .then((response) => {
         alert("Employee created successfully!");
         navigate("/employees"); // Redirect to the employee list page

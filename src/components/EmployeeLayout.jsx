@@ -4,11 +4,13 @@ import SideMenu from './SideMenu';
 import './EmployeeLayout.css';
 
 const EmployeeLayout = ({ children }) => {
-  const { userId } = useParams();
+  const params = useParams();
+  // Get the appropriate ID regardless of whether it's userId or supervisorId
+  const id = params.userId || params.supervisorId;
   
   return (
     <div className="employee-layout">
-      <SideMenu userId={userId} />
+      <SideMenu userId={id} />
       <div className="employee-content">
         {children}
       </div>

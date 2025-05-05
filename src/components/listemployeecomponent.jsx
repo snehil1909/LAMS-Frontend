@@ -9,8 +9,18 @@ import {
   getEmployeesByRole,
   getEmployeeByEmployeeId,
 } from '../services/employeeservice';
+import AdminViewProfile from './AdminViewProfile';
+import Modal from 'react-modal';
+
+Modal.setAppElement('#root');
 
 const ListEmployeeComponent = () => {
+  const [selectedUserId, setSelectedUserId] = useState(null);
+  const [showProfileModal, setShowProfileModal] = useState(false);
+  const handleViewProfile = (userId) => {
+    setSelectedUserId(userId);
+    setShowProfileModal(true);
+  };
   const [employees, setEmployees] = useState([]);
   const [departments, setDepartments] = useState([]);
   const [supervisors, setSupervisors] = useState([]);
@@ -212,7 +222,7 @@ const ListEmployeeComponent = () => {
                   <td>
                     <button
                       className="btn btn-info me-2"
-                      onClick={() => navigate(`/profile/${employee.userId}`)}
+                      onClick={() => handleViewProfile(employee.userId)}
                     >
                       View Profile
                     </button>
@@ -233,6 +243,11 @@ const ListEmployeeComponent = () => {
               ))}
             </tbody>
           </table>
+          <AdminViewProfile
+            isOpen={showProfileModal}
+            onClose={() => setShowProfileModal(false)}
+            userId={selectedUserId}
+          />
         </div>
       </div>
   );
