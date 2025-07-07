@@ -8,12 +8,15 @@ import com.example.Leavefy_LAMS.Model.LeaveBalance;
 import com.example.Leavefy_LAMS.Model.LeaveRequest;
 import com.example.Leavefy_LAMS.Model.LeaveType;
 import com.example.Leavefy_LAMS.Model.User;
+import com.example.Leavefy_LAMS.Service.AttendanceService;
 import com.example.Leavefy_LAMS.Service.EmployeeService;
+import com.example.Leavefy_LAMS.Service.Impl.AttendanceServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 @RestController
@@ -22,12 +25,14 @@ import java.util.stream.Collectors;
 public class EmployeeController {
 
     private final EmployeeService employeeService;
-
+    private final AttendanceService attendanceService;
     @Autowired
-    public EmployeeController(EmployeeService employeeService) {
+    public EmployeeController(
+            EmployeeService employeeService,
+            AttendanceService attendanceService) { // Add this parameter
         this.employeeService = employeeService;
+        this.attendanceService = attendanceService; // Add this
     }
-
     @GetMapping("/profile/{userId}")
     public ResponseEntity<EmployeeProfileDTO> getEmployeeProfile(@PathVariable Long userId) {
         User user = employeeService.getEmployeeProfile(userId);
@@ -73,9 +78,13 @@ public class EmployeeController {
             @PathVariable Long userId,
             @RequestBody LeaveRequestDTO leaveRequestDTO) {
         LeaveRequest request = new LeaveRequest();
+        // Get the user first to access their supervisor
+        User user = employeeService.getEmployeeProfile(userId);
+
         request.setStartDate(leaveRequestDTO.getStartDate());
         request.setEndDate(leaveRequestDTO.getEndDate());
         request.setReason(leaveRequestDTO.getReason());
+        request.setSupervisor(user.getSupervisor());
 
         LeaveType leaveType = new LeaveType();
         leaveType.setLeaveTypeId(leaveRequestDTO.getLeaveTypeId());
@@ -113,4 +122,25 @@ public class EmployeeController {
         dto.setRemainingDays(balance.getRemainingDays());
         return dto;
     }
+
+
+        @GetMapping("/{userId}/attendance/history")
+        public ResponseEntity<Map<String, String>> getAttendanceHistory(
+                @PathVariable Long userId,
+                @RequestParam int year,
+                @RequestParam int month) {
+
+            if (month < 1 || month > 12) {
+                return ResponseEntity.badRequest().build();
+            }
+
+            if (year < 2000 || year > 2100) {
+                return ResponseEntity.badRequest().build();
+            }
+
+
+            Map<String, String> history = attendanceService.getAttendanceHistory(userId, year, month);
+            return ResponseEntity.ok(history);
+        }
+
 }

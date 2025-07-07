@@ -38,26 +38,70 @@ public class EmployeeServiceImpl implements EmployeeService {
                 .orElseThrow(() -> new ResourceNotFoundException("Employee not found"));
     }
 
-    @Override
-    @Transactional
-    public LeaveRequest submitLeaveRequest(Long employeeId, LeaveRequest leaveRequest) {
-        User employee = userRepository.findById(employeeId)
-                .orElseThrow(() -> new ResourceNotFoundException("Employee not found"));
+//    @Override
+//    @Transactional
+//    public LeaveRequest submitLeaveRequest(Long employeeId, LeaveRequest leaveRequest) {
+//        User employee = userRepository.findById(employeeId)
+//                .orElseThrow(() -> new ResourceNotFoundException("Employee not found"));
+//
+//        LeaveBalance balance = leaveBalanceRepository
+//                .findByUserAndLeaveType(employee, leaveRequest.getLeaveType())
+//                .orElseThrow(() -> new ResourceNotFoundException("Leave balance not found"));
+//
+////        long leaveDays = ChronoUnit.DAYS.between(leaveRequest.getStartDate(), leaveRequest.getEndDate()) + 1;
+////// Calculate leave days
+//        long leaveDays = ChronoUnit.DAYS.between(leaveRequest.getStartDate(),
+//                leaveRequest.getEndDate()) + 1;
+//        if (balance.getRemainingDays() < leaveDays) {
+//            throw new IllegalStateException("Insufficient leave balance");
+//        }
+//
+//        // Update balance if request is approved
+//        if ("APPROVED".equals(leaveRequest.getStatus())) {
+//            balance.setUsedDays(balance.getUsedDays() + (int)leaveDays);
+//            balance.setRemainingDays(balance.getTotalDays() - balance.getUsedDays());
+//            leaveBalanceRepository.save(balance);
+//        }
+//
+//        leaveRequest.setUser(employee);
+//        leaveRequest.setStatus("PENDING");
+//        return leaveRequestRepository.save(leaveRequest);
+//    }
 
-        LeaveBalance balance = leaveBalanceRepository
-                .findByUserAndLeaveType(employee, leaveRequest.getLeaveType())
-                .orElseThrow(() -> new ResourceNotFoundException("Leave balance not found"));
+@Override
+@Transactional
+public LeaveRequest submitLeaveRequest(Long employeeId, LeaveRequest leaveRequest) {
+    // Get employee and validate existence
+    User employee = userRepository.findById(employeeId)
+            .orElseThrow(() -> new ResourceNotFoundException("Employee not found"));
 
-        long leaveDays = ChronoUnit.DAYS.between(leaveRequest.getStartDate(), leaveRequest.getEndDate()) + 1;
-
-        if (balance.getRemainingDays() < leaveDays) {
-            throw new IllegalStateException("Insufficient leave balance");
-        }
-
-        leaveRequest.setUser(employee);
-        leaveRequest.setStatus("PENDING");
-        return leaveRequestRepository.save(leaveRequest);
+    // Check if employee has a supervisor
+    if (employee.getSupervisor() == null) {
+        throw new IllegalStateException("Employee does not have a supervisor assigned");
     }
+
+    // Validate leave balance exists
+    LeaveBalance balance = leaveBalanceRepository
+            .findByUserAndLeaveType(employee, leaveRequest.getLeaveType())
+            .orElseThrow(() -> new ResourceNotFoundException("Leave balance not found"));
+
+    // Calculate requested leave days
+    long leaveDays = ChronoUnit.DAYS.between(leaveRequest.getStartDate(),
+            leaveRequest.getEndDate()) + 1;
+
+    // Check if enough balance is available
+    if (balance.getRemainingDays() < leaveDays) {
+        throw new IllegalStateException("Insufficient leave balance");
+    }
+
+    // Set request details
+    leaveRequest.setUser(employee);
+    leaveRequest.setSupervisor(employee.getSupervisor());
+    leaveRequest.setStatus("PENDING");
+
+    // Save and return the request
+    return leaveRequestRepository.save(leaveRequest);
+}
 
     @Override
     public List<LeaveRequest> getEmployeeLeaveRequests(Long employeeId) {

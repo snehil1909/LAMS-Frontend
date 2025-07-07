@@ -12,4 +12,9 @@ public class LeaveRequestResponseDTO {
     private String status;
     private String reason;
     private LocalDate appliedDate;
+    // Add employee details
+    private Long employeeId;
+   // This is the string employee ID (E100)
+    private String employeeName;    // Concatenated first and last name
+
 }

@@ -2,6 +2,7 @@ package com.example.Leavefy_LAMS.Model;
 
 
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -24,6 +25,7 @@ public class Attendance {
 
     @ManyToOne
     @JoinColumn(name = "user_id", nullable = false)
+    @JsonIgnoreProperties({"leaveRequests", "attendances", "supervisor", "subordinates"})
     private User user;
 
     @Column(name = "date", nullable = false)

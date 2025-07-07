@@ -1,6 +1,7 @@
 package com.example.Leavefy_LAMS.Model;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -32,9 +33,11 @@ public class LeaveType {
     @Column(name = "country_code")
     private String countryCode;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "leaveType")
     private List<LeaveBalance> leaveBalances;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "leaveType")
     private List<LeaveRequest> leaveRequests;
 }

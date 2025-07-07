@@ -10,4 +10,6 @@ import java.util.Optional;
 public interface LeaveRequestRepository extends JpaRepository<LeaveRequest, Long> {
     List<LeaveRequest> findByUser(User user);
     Optional<LeaveRequest> findByRequestIdAndUserUserId(Long requestId, Long userId);
+        List<LeaveRequest> findByStatusAndSupervisorUserId(String status, Long supervisorId);
+
 }
